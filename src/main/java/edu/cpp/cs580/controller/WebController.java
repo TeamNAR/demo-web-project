@@ -53,6 +53,43 @@ public class WebController {
 	}
 
 	/**
+	 *  simple GET method with static parameters 
+	 * 	http://localhost:8080/cs580/streak
+	 */
+	@RequestMapping(value = "/cs580/streak", method = RequestMethod.GET)
+	String streakCheack() {
+		int goal = 0;
+		int streak = 0;
+		
+		String message;
+		if(streak >= goal){
+			message = "Congartulations!! YOU DID IT!! :D";
+		}
+		else{
+			message = "Not yet! Sorry :(";
+		}
+		return message;
+	}
+
+	/**
+	 *  same as previous method but with HTTP POST 
+	 * 	http://localhost:8080/cs580/streakpost
+	 */
+	@RequestMapping(value = "/cs580/streakpost", method = RequestMethod.POST)
+	String streakCheackwithPOST(@RequestParam("goal") int goal,
+								@RequestParam("streak") int streak) {
+		
+		String message;
+		if(streak >= goal){
+			message = "Congartulations!! YOU DID IT!! :D";
+		}
+		else{
+			message = "Not yet! Sorry :(";
+		}
+		return message;
+	}
+	
+	/**
 	 * This is a simple example of how to use a data manager
 	 * to retrieve the data and return it as an HTTP response.
 	 *
