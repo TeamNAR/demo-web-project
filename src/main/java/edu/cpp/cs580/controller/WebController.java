@@ -18,6 +18,11 @@ import edu.cpp.cs580.data.User;
 import edu.cpp.cs580.data.provider.UserManager;
 
 
+import java.util.Arrays;
+import java.util.ArrayList;
+
+
+
 /**
  * This is the controller used by Spring framework.
  * <p>
@@ -91,6 +96,76 @@ public class WebController {
 		}
 		return message;
 	}
+
+	/**
+	 *  same as previous method but with HTTP POST 
+	 * 	http://localhost:8080/cs580/commongoals
+	 */
+	
+	@RequestMapping(value = "/cs580/commongoals", method = RequestMethod.POST)
+	String commongoals(@RequestParam("CommonGoals") String commonGoal) {
+		
+		
+		String message;
+		String[] commongoals = {"Reading", "work out", "volunteer", "increase income"};
+		if(commonGoal = "Reading", "work out", "volunteer", "increase income") {
+			message = "Yes, this goal is common";
+		}
+		
+		
+		else{
+		message = "No, this is not a common goal";
+		}
+		return message;
+	
+	}
+
+		private boolean commonGoal(String string, String string2, String string3, String string4) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+		//String[] commongoals = {"Reading", "work out", "volunteer", "increase income"};
+
+
+
+	/*
+	private boolean commonGoal(String string, String string2, String string3, String string4) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@RequestMapping(value = "/cs580/sharemygoal", method = RequestMethod.POST)
+	String shareMyGoal(@RequestParam("commonGoal") String commonGoal) {
+		//who to create java String array/list string array with 4 elements (named goals)
+		//how to search array for element (commonGoal)
+		String message;
+		
+		//if array has element == commonGoal
+		message = "Yes, this goal is common";
+		//else
+		message = "No, this is not a common goal";
+
+		return message;
+	}
+
+
+	
+	public class commongoalslist
+	{
+	   public static void main(String[] args)
+	   {
+	      String[] commongoals = {"Reading", "work out", "volunteer", "increase income"};
+	  
+	      List<String> goalList = Arrays.asList(commongoals);
+	  
+	      for (String e : goalList)
+	      {
+	         System.out.println(e);
+	      }
+	   }
+	}*/
+	
 	
 	/**
 	 *  
