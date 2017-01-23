@@ -1,6 +1,9 @@
 package edu.cpp.cs580.controller;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -87,6 +90,40 @@ public class WebController {
 			message = "Not yet! Sorry :(";
 		}
 		return message;
+	}
+	
+	/**
+	 *  
+	 * 	http://localhost:8080/cs580/timer
+	 */
+
+	Timer t;
+	String message;
+	@RequestMapping(value = "/cs580/timer", method = RequestMethod.POST)
+	String timerOut(@RequestParam("time") int seconds) {
+
+
+		System.out.println("the task is scheduled for 10 seconds ");
+		System.out.println(new Date());
+		System.out.println("Starting now ");
+		message = "the program has run for " + seconds + " seconds from " + new Date() ;
+
+		t = new Timer();
+		t.schedule(new RemindTask(), seconds*1000);
+
+		return message;
+	}
+
+	class RemindTask extends TimerTask {
+		public void run() {
+			System.out.format("OPPS time's up ");
+			t.cancel(); 
+			System.out.format("%n the new time is ");
+			System.out.println(new Date());
+			
+			//message = " until " + new Date();
+			
+		}
 	}
 	
 	/**
