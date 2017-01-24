@@ -141,6 +141,30 @@ public class WebController {
 
 		return message;
 	}
+	
+	/**
+	 *  
+	 * 	http://localhost:8080/cs580/CheckToDoList
+	 */ 
+	@RequestMapping(value = "/cs580/CheckToDoList", method = RequestMethod.GET)
+	String test() {
+		int count = 0;
+		String message;
+		String toDoList = null;
+		
+		if (toDoList == "yes"){
+			count++;
+			message = "Congartulations .. You complete the list";
+		}
+		
+		else
+			message = "You did not complete the list";
+
+		return message;
+	}
+
+
+	/**
 
 	class RemindTask extends TimerTask {
 		public void run() {
