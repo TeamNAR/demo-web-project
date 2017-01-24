@@ -19,7 +19,7 @@ import edu.cpp.cs580.data.provider.UserManager;
 
 
 import java.util.Arrays;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 
 
@@ -68,7 +68,7 @@ public class WebController {
 	String streakCheack() {
 		int goal = 0;
 		int streak = 0;
-		
+
 		String message;
 		if(streak >= goal){
 			message = "Congartulations!! YOU DID IT!! :D";
@@ -78,6 +78,7 @@ public class WebController {
 		}
 		return message;
 	}
+
 
 	/**
 	 *  same as previous method but with HTTP POST 
@@ -85,8 +86,8 @@ public class WebController {
 	 */
 	@RequestMapping(value = "/cs580/streakpost", method = RequestMethod.POST)
 	String streakCheackwithPOST(@RequestParam("goal") int goal,
-								@RequestParam("streak") int streak) {
-		
+			@RequestParam("streak") int streak) {
+
 		String message;
 		if(streak >= goal){
 			message = "Congartulations!! YOU DID IT!! :D";
@@ -97,76 +98,28 @@ public class WebController {
 		return message;
 	}
 
+
 	/**
-	 *  same as previous method but with HTTP POST 
-	 * 	http://localhost:8080/cs580/commongoals
+	 *  GET method 
+	 * 	http://localhost:8080/cs580/commongoal
 	 */
-	
-	@RequestMapping(value = "/cs580/commongoals", method = RequestMethod.POST)
-	String commongoals(@RequestParam("CommonGoals") String commonGoal) {
-		
-		
+
+	@RequestMapping(value = "/cs580/commongoal", method = RequestMethod.GET)
+	String commonGoal() {
+		List<String> commongoals = Arrays.asList("Reading", "work out", "volunteer", "increase income");
+
+		boolean contains = commongoals.contains("Reading");
+
 		String message;
-		String[] commongoals = {"Reading", "work out", "volunteer", "increase income"};
-		if(commonGoal = "Reading", "work out", "volunteer", "increase income") {
+		if(contains){
 			message = "Yes, this goal is common";
 		}
-		
-		
 		else{
-		message = "No, this is not a common goal";
+			message = "No, this is not a common goal";
 		}
 		return message;
-	
 	}
 
-		private boolean commonGoal(String string, String string2, String string3, String string4) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-		//String[] commongoals = {"Reading", "work out", "volunteer", "increase income"};
-
-
-
-	/*
-	private boolean commonGoal(String string, String string2, String string3, String string4) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@RequestMapping(value = "/cs580/sharemygoal", method = RequestMethod.POST)
-	String shareMyGoal(@RequestParam("commonGoal") String commonGoal) {
-		//who to create java String array/list string array with 4 elements (named goals)
-		//how to search array for element (commonGoal)
-		String message;
-		
-		//if array has element == commonGoal
-		message = "Yes, this goal is common";
-		//else
-		message = "No, this is not a common goal";
-
-		return message;
-	}
-
-
-	
-	public class commongoalslist
-	{
-	   public static void main(String[] args)
-	   {
-	      String[] commongoals = {"Reading", "work out", "volunteer", "increase income"};
-	  
-	      List<String> goalList = Arrays.asList(commongoals);
-	  
-	      for (String e : goalList)
-	      {
-	         System.out.println(e);
-	      }
-	   }
-	}*/
-	
-	
 	/**
 	 *  
 	 * 	http://localhost:8080/cs580/timer
