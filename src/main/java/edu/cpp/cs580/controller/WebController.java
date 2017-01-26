@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -98,6 +99,28 @@ public class WebController {
 		return message;
 	}
 
+	/**
+	 *  A4 -- HTTP API method using the library Common Math 
+	 * 	http://localhost:8080/commonMath
+	 */
+	@RequestMapping(value = "/commonMath", method = RequestMethod.GET)
+	String commonsMathLibraryExample() {
+		//from http://stackoverflow.com/questions/15306207/standard-deviation-with-apache-commons-math
+		
+	    double[] v = {1.0, 2.0, 3.0, 4.0, 5.0};
+	    StandardDeviation sd = new StandardDeviation(false);
+	    sd.evaluate(v);
+
+	    StandardDeviation sd2 = new StandardDeviation();
+	    sd2.evaluate(v);
+	    
+		String message = "Using Apache Commons Math Liabray calculations on the array {1.0, 2.0, 3.0, 4.0, 5.0}"
+				+ "were done; such as, The Population Standard deviation = " + sd.evaluate(v) + 
+				", and The Standard Deviation = " +  sd2.evaluate(v);
+
+		return message;
+	}
+	
 
 	/**
 	 *  GET method 
@@ -142,6 +165,18 @@ public class WebController {
 		return message;
 	}
 	
+	class RemindTask extends TimerTask {
+		public void run() {
+			System.out.format("OPPS time's up ");
+			t.cancel(); 
+			System.out.format("%n the new time is ");
+			System.out.println(new Date());
+			
+			//message = " until " + new Date();
+			
+		}
+	}
+	
 	/**
 	 *  
 	 * 	http://localhost:8080/cs580/CheckToDoList
@@ -163,20 +198,6 @@ public class WebController {
 		return message;
 	}
 
-
-	/**
-
-	class RemindTask extends TimerTask {
-		public void run() {
-			System.out.format("OPPS time's up ");
-			t.cancel(); 
-			System.out.format("%n the new time is ");
-			System.out.println(new Date());
-			
-			//message = " until " + new Date();
-			
-		}
-	}
 	
 	/**
 	 * This is a simple example of how to use a data manager
