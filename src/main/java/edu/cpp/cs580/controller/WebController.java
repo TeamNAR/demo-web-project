@@ -23,6 +23,16 @@ import java.util.Arrays;
 //import java.util.ArrayList;
 
 
+//package com.javarticles.guava;
+
+import java.util.ArrayList;
+//import java.util.Arrays;
+import java.util.Collection;
+//import java.util.List;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Collections2;
+
 
 /**
  * This is the controller used by Spring framework.
@@ -180,6 +190,7 @@ public class WebController {
 	/**
 	 *  
 	 * 	http://localhost:8080/cs580/CheckToDoList
+	 *  Amani
 	 */ 
 	@RequestMapping(value = "/cs580/CheckToDoList", method = RequestMethod.GET)
 	String test() {
@@ -198,6 +209,34 @@ public class WebController {
 		return message;
 	}
 
+	/**
+	 *  A4 -- HTTP API method using the library Google Guava 
+	 * 	http://localhost:8080/GoogleGuava
+	 *  Amani
+	 */
+	@RequestMapping(value = "/GoogleGuava", method = RequestMethod.GET)
+	String GoogleGuavaLibraryExample() {
+		
+		
+		List inputList = Arrays.asList("Hi There", "I am", "testing functions");
+        System.out.println(inputList);
+        Function<String, String[]> splitByWords = new Function<String, String[]>(){
+
+            public String[] apply(String input) {
+                return input.split(" ");
+            }};
+            
+        Collection<String[]> wordsList = Collections2.transform(inputList, splitByWords);
+        List allWords = new ArrayList();
+        for (String[] words : wordsList) {
+            allWords.addAll(Arrays.asList(words));
+        }
+        System.out.println(allWords);
+        
+        String message = "Split By Words";
+
+		return message;
+	}
 	
 	/**
 	 * This is a simple example of how to use a data manager
