@@ -7,6 +7,7 @@ import java.util.TimerTask;
 
 import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.JsonParser;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,9 +30,16 @@ import java.util.ArrayList;
 //import java.util.Arrays;
 import java.util.Collection;
 //import java.util.List;
-
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
+
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
 
 
 /**
@@ -150,6 +158,37 @@ public class WebController {
 		else{
 			message = "No, this is not a common goal";
 		}
+		return message;
+	}
+	
+	/**
+	 *  A4 --  jsoup library 
+	 * 	http://localhost:8080/jsoup
+	 */
+	@RequestMapping(value = "/ jsoup", method = RequestMethod.GET)
+	String  jsoupLibraryExample() {
+		
+		Document doc;
+        try {
+
+            //get all images
+            doc = Jsoup.connect("http://yahoo.com").get();
+            Elements images = doc.select("img[src~=(?i)\\.(png|jpe?g|gif)]");
+            for (Element image : images) {
+
+                System.out.println("\nsrc : " + image.attr("src"));
+                System.out.println("height : " + image.attr("height"));
+                System.out.println("width : " + image.attr("width"));
+                System.out.println("alt : " + image.attr("alt"));
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	    
+		String message = "Done";
+
 		return message;
 	}
 
