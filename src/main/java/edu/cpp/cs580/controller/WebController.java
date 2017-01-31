@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParser;
@@ -39,7 +40,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 /**
@@ -191,6 +197,27 @@ public class WebController {
 		String message = "Done";
 
 		return message;
+	}
+
+	/**
+	 * A4 -- Using Commons IO Library
+	 * 
+	 * @throws IOException 
+	 * @throws MalformedURLException 
+	 */
+	@RequestMapping(value = "/commonsIO", method = RequestMethod.GET)
+	String  commonsIOLibraryExample() throws MalformedURLException, IOException {
+		String message = null;
+		
+		InputStream in = new URL( "http://commons.apache.org" ).openStream();
+		 try {
+		   System.out.println( in.toString() );
+		   message = in.toString();
+		 } finally {
+		   IOUtils.closeQuietly(in);
+		 }
+
+		return message;	 
 	}
 
 	/**
