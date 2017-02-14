@@ -90,7 +90,7 @@ public class WebController {
 	 * 	http://localhost:8080/cs580/streak
 	 */
 	@RequestMapping(value = "/cs580/streak", method = RequestMethod.GET)
-	String streakCheack() {
+	String streakCheck() {
 		int goal = 0;
 		int streak = 0;
 
