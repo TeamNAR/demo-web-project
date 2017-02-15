@@ -152,7 +152,7 @@ public class WebController {
 	 */
 
 	@RequestMapping(value = "/cs580/commongoal", method = RequestMethod.GET)
-	String commonGoal() {
+	public String commonGoal() {
 		List<String> commongoals = Arrays.asList("Reading", "work out", "volunteer", "increase income");
 
 		boolean contains = commongoals.contains("Reading");

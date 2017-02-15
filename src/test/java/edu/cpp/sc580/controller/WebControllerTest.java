@@ -31,4 +31,14 @@ public class WebControllerTest {
 	}
 	
 	
+	//Ahlam
+	@Test
+	public void testcommonGoal() {
+		
+		WebController msg = new WebController();
+		String result = msg.commonGoal();
+		Assert.assertEquals("Yes, this goal is common",result);
+		
+	}
+	
 }
