@@ -260,7 +260,7 @@ public class WebController {
 	 *  Amani
 	 */ 
 	@RequestMapping(value = "/cs580/CheckToDoList", method = RequestMethod.GET)
-	String test() {
+	public String test() {
 		int count = 0;
 		String message;
 		String toDoList = null;
