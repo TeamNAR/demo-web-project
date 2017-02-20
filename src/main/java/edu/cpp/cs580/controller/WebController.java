@@ -110,7 +110,7 @@ public class WebController {
 	 * 	http://localhost:8080/cs580/streakpost
 	 */
 	@RequestMapping(value = "/cs580/streakpost", method = RequestMethod.POST)
-	String streakCheackwithPOST(@RequestParam("goal") int goal,
+	public String streakCheackwithPOST(@RequestParam("goal") int goal,
 			@RequestParam("streak") int streak) {
 
 		String message;
@@ -128,7 +128,7 @@ public class WebController {
 	 * 	http://localhost:8080/commonMath
 	 */
 	@RequestMapping(value = "/commonMath", method = RequestMethod.GET)
-	String commonsMathLibraryExample() {
+	public String commonsMathLibraryExample() {
 		//from http://stackoverflow.com/questions/15306207/standard-deviation-with-apache-commons-math
 		
 	    double[] v = {1.0, 2.0, 3.0, 4.0, 5.0};
@@ -317,7 +317,7 @@ public class WebController {
 	 * 	http://localhost:8080/cs580/user/user101
 	 */
 	@RequestMapping(value = "/cs580/user/{userId}", method = RequestMethod.GET)
-	User getUser(@PathVariable("userId") String userId) {
+	public User getUser(@PathVariable("userId") String userId) {
 		User user = userManager.getUser(userId);
 		return user;
 	}
@@ -341,7 +341,7 @@ public class WebController {
 	 * @return
 	 */
 	@RequestMapping(value = "/cs580/user/{userId}", method = RequestMethod.POST)
-	User updateUser(
+	public User updateUser(
 			@PathVariable("userId") String id,
 			@RequestParam("name") String name,
 			@RequestParam(value = "major", required = false) String major) {
@@ -359,7 +359,7 @@ public class WebController {
 	 * @param userId
 	 */
 	@RequestMapping(value = "/cs580/user/{userId}", method = RequestMethod.DELETE)
-	void deleteUser(
+	public void deleteUser(
 			@PathVariable("userId") String userId) {
 		userManager.deleteUser(userId);
 	}
