@@ -74,5 +74,13 @@ public class WebControllerTest {
 		Assert.assertEquals("Yes, this goal is common",result);
 
 	}
+	//Rasha 
+		@Test
+		public void testTimer() {
+			
+			WebController Mes = new WebController();
+			String result = Mes.testRasha();
+			Assert.assertNotNull(result);
+		}
 
 }

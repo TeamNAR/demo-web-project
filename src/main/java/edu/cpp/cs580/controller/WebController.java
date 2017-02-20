@@ -256,6 +256,26 @@ public class WebController {
 	
 	/**
 	 *  
+	 * 	http://localhost:8080/cs580/testrasha
+	 *  Rasha Method 2 
+	 */ 
+	 @RequestMapping(value = "/cs580/testrasha", method = RequestMethod.GET)
+		public String testRasha() {
+		 int num1 = 2;
+			int num2 = 1;
+		String message;
+			if(num1 >= num2){
+				message = " the secound number is larger  ";
+			}
+			else{
+				message = "the first number is larger ";
+			}
+			return message;
+		}
+		
+	
+	/**
+	 *  
 	 * 	http://localhost:8080/cs580/CheckToDoList
 	 *  Amani
 	 */ 
