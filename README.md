@@ -35,7 +35,7 @@ Running the Project Locally
 
 ----------------------------------------
 
-Test if the build can be automatically triggered in Jenkins.
 
+Test if the build can be automatically triggered in Jenkins.
 
  
