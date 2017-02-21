@@ -33,5 +33,9 @@ Running the Project Locally
 - http://localhost:8080/cs580/home
 - http://localhost:8080/home-ajs.html
 
+----------------------------------------
+
+Test if the build can be automatically triggered in Jenkins.
+
 
  
